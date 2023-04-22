@@ -11,7 +11,6 @@ import {
 import Home from "./pages/home";
 import Categories from "./pages/Categories";
 import Search from "./pages/Search";
-import { SearchContext } from "./components/Header";
 
 const appRouter = createBrowserRouter([
   {
