@@ -2,14 +2,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
 import searchIcon from "../assets/search.png";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setSearchUrl } from "../features/apiUrlSlice";
 
-const Header = ({ search, setSearch }) => {
+
+const Header = () => {
   const [inputData, setInputData] = useState("");
-  const [url, setUrl] = useState("");
-  const navigate = useNavigate();
+
+  const dispatch = useDispatch()
 
   const handleOnClick = () => {
-    setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`);
+    // setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`);
+    dispatch(setSearchUrl(inputData))
   };
 
   return (
@@ -61,10 +65,10 @@ const Header = ({ search, setSearch }) => {
           >
             <input
               type="text"
-              placeholder="Search"
+              placeholder="Search by name"
               className="input input-bordered rounded-[100vmax] h-10 w-24 sm:w-40 md:w-48"
-              onChange={(e) => setSearch(e.target.value)}
-              value={search}
+              onChange={(e) => setInputData(e.target.value)}
+              value={inputData}
             />
             <Link to="/search">
               <button
