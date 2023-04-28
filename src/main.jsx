@@ -11,8 +11,6 @@ import {
 import Home from "./pages/home";
 import Categories from "./pages/Categories";
 import Search from "./pages/Search";
-import { Provider } from "react-redux";
-import { store } from "./app/store";
 
 const appRouter = createBrowserRouter([
   {
@@ -45,8 +43,6 @@ const appRouter = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
       <RouterProvider router={appRouter} />
-    </Provider>
   </React.StrictMode>
 );

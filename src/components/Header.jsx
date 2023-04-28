@@ -2,18 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
 import searchIcon from "../assets/search.png";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setSearchUrl } from "../features/apiUrlSlice";
 
 
 const Header = () => {
   const [inputData, setInputData] = useState("");
 
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   const handleOnClick = () => {
     // setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`);
-    dispatch(setSearchUrl(inputData))
+    // dispatch(setSearchUrl(inputData))
   };
 
   return (
