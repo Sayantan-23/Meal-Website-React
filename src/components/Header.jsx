@@ -1,18 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
-import { createContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import searchIcon from "../assets/search.png";
-import axios from "axios";
-
 
 const Header = () => {
-  const [inputData, setInputData] = useState("");
+  // const [inputData, setInputData] = useState("");
 
   // const dispatch = useDispatch()
 
-  const handleOnClick = () => {
-    // setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`);
-    // dispatch(setSearchUrl(inputData))
-  };
+  // const handleOnClick = () => {
+  //   // setUrl(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputData}`);
+  //   // dispatch(setSearchUrl(inputData))
+  // };
 
   return (
     <>
@@ -61,18 +58,15 @@ const Header = () => {
             className="form-control flex-row items-center gap-3"
             onSubmit={(e) => e.preventDefault()}
           >
-            <input
+            {/* <input
               type="text"
               placeholder="Search by name"
               className="input input-bordered rounded-[100vmax] h-10 w-24 sm:w-40 md:w-48"
               onChange={(e) => setInputData(e.target.value)}
               value={inputData}
-            />
+            /> */}
             <Link to="/search">
-              <button
-                className="btn bg-base-100 hover:bg-amber-700 rounded-[100vmax] p-2 w-12"
-                onClick={handleOnClick}
-              >
+              <button className="btn bg-base-100 hover:bg-amber-700 rounded-[100vmax] p-2 w-12">
                 <img className="w-5" src={searchIcon} alt="Search Icon" />
               </button>
             </Link>
