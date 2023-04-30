@@ -65,11 +65,11 @@ const Search = () => {
   return (
     <>
       <div className={showCard ? "brightness-[0.3] pointer-events-none" : ""}>
-        <div className=" pt-[85px] flex w-full justify-center gap-2 sticky top-0 z-10">
+        <div className="pt-[100px] flex w-full justify-center gap-2 sticky top-0 z-10">
           <input
             type="text"
             placeholder="Search"
-            className="input input-bordered input-warning max-w-xs rounded-[100vmax] h-12 w-24 sm:w-40 md:w-96"
+            className="input input-bordered input-warning rounded-[100vmax] h-12 w-60 sm:w-80 md:w-96"
             onChange={(e) => setInputData(e.target.value)}
           />
           <button

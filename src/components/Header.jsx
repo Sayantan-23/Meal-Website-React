@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import searchIcon from "../assets/search.png";
 
 const Header = () => {
-
   return (
     <>
       <div className="navbar m-auto backdrop-blur-md justify-between fixed top-0 z-50">
@@ -43,7 +42,18 @@ const Header = () => {
               to="/"
               className="normal-case text-xl sm:text-3xl text-[#f1faee] font-bold"
             >
-              Recipe<span className="text-amber-700">Realm</span>
+              <span className="relative flex">
+                <span className="relative text-4xl right-11 sm:right-11 sm:top-0 sm:text-6xl font-semibold">R<span className="absolute right-1 text-amber-700">R</span></span>
+                <span className="flex flex-col justify-center items-center relative">
+                  <span className="text-amber-700 absolute z-10 bottom-3 sm:bottom-4 -left-11">
+                    ecipe
+                  </span>
+                  {/* <span className="absolute z-20 sm:text-4xl">🍔</span> */}
+                  <span className="absolute z-30 top-[10px] sm:top-[22px] -left-11">
+                    ealm
+                  </span>
+                </span>
+              </span>
             </Link>
           </div>
           <div
