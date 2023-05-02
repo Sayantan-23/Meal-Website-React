@@ -8,9 +8,10 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import Search from "./pages/Search";
+import Recipe from "./pages/Recipe";
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const appRouter = createBrowserRouter([
         path: "/search",
         element: <Search />,
       },
+      {
+        path: "/recipe",
+        element:<Recipe />
+      }
     ],
   },
 ]);
