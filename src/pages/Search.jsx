@@ -2,21 +2,23 @@ import axios from "../axios/axios";
 import { createContext, useEffect, useState } from "react";
 import searchIcon from "../assets/search.png";
 import { Link } from "react-router-dom";
+import useStore from "../app/store";
 
 const Search = () => {
   const [inputData, setInputData] = useState("");
   const [onSearch, setOnSearch] = useState(false);
   const [searchData, setSearchData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [onSingleSearch, setOnSingleSearch] = useState(false);
-  const [singleSearchInputData, setSingleSearchInputData] = useState("");
+
+  const changeInputValue = useStore((state)=>state.changeInputValue)
 
   const handleOnClick = () => {
     setOnSearch(true);
   };
 
   const searchOnClick = (element) => {
-    setSingleSearchInputData(element);
+    setInputData(element)
+    changeInputValue(element)
   };
 
   const getSearchData = async () => {
@@ -34,7 +36,6 @@ const Search = () => {
   };
 
   useEffect(() => {
-    console.log(inputData);
     if (onSearch) {
       if (inputData.trim().length === 0) {
         setOnSearch(false);
@@ -44,6 +45,7 @@ const Search = () => {
       }
     }
   }, [onSearch]);
+
 
   return (
     <>
