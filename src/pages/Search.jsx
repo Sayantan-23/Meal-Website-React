@@ -10,15 +10,18 @@ const Search = () => {
   const [searchData, setSearchData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const changeInputValue = useStore((state)=>state.changeInputValue)
+  const changeInputValue = useStore((state) => state.changeInputValue);
 
   const handleOnClick = () => {
     setOnSearch(true);
+    if (inputData) {
+      localStorage.removeItem("lists")
+    }
   };
 
   const searchOnClick = (element) => {
-    setInputData(element)
-    changeInputValue(element)
+    setInputData(element);
+    changeInputValue(element);
   };
 
   const getSearchData = async () => {
@@ -28,6 +31,7 @@ const Search = () => {
         setErrorMessage("Please Search For Valid Meals");
       } else {
         setSearchData(res.data.meals);
+        localStorage.setItem("lists", JSON.stringify(res.data.meals));
         setErrorMessage("");
       }
     } catch (error) {
@@ -36,16 +40,25 @@ const Search = () => {
   };
 
   useEffect(() => {
-    if (onSearch) {
-      if (inputData.trim().length === 0) {
-        setOnSearch(false);
-      } else {
-        getSearchData();
-        setOnSearch(false);
+    const recipe =
+      localStorage.getItem("lists") !== null
+        ? JSON.parse(localStorage.getItem("lists"))
+        : [];
+    setSearchData(recipe);
+
+    if (recipe.length === 0) {
+      if (onSearch) {
+        if (inputData.trim().length === 0) {
+          setOnSearch(false);
+        } else {
+          getSearchData();
+          setOnSearch(false);
+        }
       }
     }
   }, [onSearch]);
 
+  console.log(searchData);
 
   return (
     <>
@@ -74,20 +87,20 @@ const Search = () => {
               return (
                 <Link to={"/recipe"} key={element.idMeal}>
                   <div
-                    className="card w-64 bg-[#2f2922] shadow-xl text-white mt-8 cursor-pointer"
+                    className="card group w-64 bg-[#2f2922] shadow-xl text-white mt-8 cursor-pointer pt-0"
                     key={element.idMeal}
                     onClick={() => searchOnClick(element.strMeal)}
                   >
-                    <figure className="p-2">
+                    <figure className="p-2 group-hover:scale-110 transition-all duration-300">
                       <img
                         src={element.strMealThumb}
                         alt="Meal Image"
                         className="rounded-xl"
                       />
                     </figure>
-                    <div className="card-body items-center text-center text-amber-200">
+                    <div className="card-body items-center text-center text-amber-50 group-hover:text-amber-200 transition-all duration-300">
                       <h2 className="card-title">{element.strMeal}</h2>
-                      <span className="text-amber-400">{element.strArea}</span>
+                      <span className="text-amber-200 group-hover:text-amber-400 transition-all duration-300">{element.strArea}</span>
                     </div>
                   </div>
                 </Link>
