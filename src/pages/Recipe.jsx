@@ -14,16 +14,16 @@ const Recipe = () => {
       const res = await axios.get(`/search.php?s=${inputData}`);
       setSearchData(res.data.meals);
       setYoutubeId(res.data.meals[0].strYoutube.split("?v=")[1]);
-      localStorage.setItem("recipe", JSON.stringify(res.data.meals));
+      sessionStorage.setItem("recipe", JSON.stringify(res.data.meals));
     } catch (error) {
       setErrorMessage("Sorry Recipe Not Found");
     }
   };
 
-  const getRecipeFromLocalStorage = async () => {
+  const getRecipeFromSessionStorage = async () => {
     const recipe =
-      localStorage.getItem("recipe") !== null
-        ? JSON.parse(localStorage.getItem("recipe"))
+      sessionStorage.getItem("recipe") !== null
+        ? JSON.parse(sessionStorage.getItem("recipe"))
         : [];
     if (recipe.length !== 0) {
       setSearchData(recipe);
@@ -36,7 +36,7 @@ const Recipe = () => {
   useEffect(() => {
     console.log(inputData);
     if (inputData.trim().length === 0) {
-      getRecipeFromLocalStorage();
+      getRecipeFromSessionStorage();
     } else {
       getRecipe();
       // const youtubeId = searchData[0].strYoutube.split("?v=")[1]

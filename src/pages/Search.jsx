@@ -15,7 +15,7 @@ const Search = () => {
   const handleOnClick = () => {
     setOnSearch(true);
     if (inputData) {
-      localStorage.removeItem("lists")
+      sessionStorage.removeItem("lists")
     }
   };
 
@@ -31,7 +31,7 @@ const Search = () => {
         setErrorMessage("Please Search For Valid Meals");
       } else {
         setSearchData(res.data.meals);
-        localStorage.setItem("lists", JSON.stringify(res.data.meals));
+        sessionStorage.setItem("lists", JSON.stringify(res.data.meals));
         setErrorMessage("");
       }
     } catch (error) {
@@ -41,8 +41,8 @@ const Search = () => {
 
   useEffect(() => {
     const recipe =
-      localStorage.getItem("lists") !== null
-        ? JSON.parse(localStorage.getItem("lists"))
+      sessionStorage.getItem("lists") !== null
+        ? JSON.parse(sessionStorage.getItem("lists"))
         : [];
     setSearchData(recipe);
 
