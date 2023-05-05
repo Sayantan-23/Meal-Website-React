@@ -5,6 +5,7 @@ import axios from "../axios/axios";
 const Recipe = () => {
   const [searchData, setSearchData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [youtubeId, setYoutubeId] = useState("");
 
   const inputData = useStore((state) => state.inputValue);
 
@@ -12,6 +13,7 @@ const Recipe = () => {
     try {
       const res = await axios.get(`/search.php?s=${inputData}`);
       setSearchData(res.data.meals);
+      setYoutubeId(res.data.meals[0].strYoutube.split("?v=")[1]);
       localStorage.setItem("recipe", JSON.stringify(res.data.meals));
     } catch (error) {
       setErrorMessage("Sorry Recipe Not Found");
@@ -25,6 +27,7 @@ const Recipe = () => {
         : [];
     if (recipe.length !== 0) {
       setSearchData(recipe);
+      setYoutubeId(recipe[0].strYoutube.split("?v=")[1])
     } else {
       setErrorMessage("Sorry Recipe Not Found");
     }
@@ -36,10 +39,13 @@ const Recipe = () => {
       getRecipeFromLocalStorage();
     } else {
       getRecipe();
+      // const youtubeId = searchData[0].strYoutube.split("?v=")[1]
+      setYoutubeId(youtubeId);
     }
   }, []);
 
-  console.log(searchData);
+  // console.log(searchData);
+  // console.log(youtubeId);
 
   return (
     <>
@@ -61,18 +67,18 @@ const Recipe = () => {
                 <h3 className="text-amber-200 text-4xl md:text-5xl">
                   {element.strMeal}
                 </h3>
-                <p className="text-amber-400 text-3xl md:text-4xl">
+                <p className="text-amber-500 text-3xl md:text-4xl">
                   {element.strArea}
                 </p>
               </div>
             </div>
             <div className="flex flex-col justify-start items-start text-white pt-10 gap-4 px-4">
-              <h4 className="text-3xl sm:text-4xl">🍴 How to Make it</h4>
-              <p className="text-xl sm:text-2xl">-{element.strInstructions}</p>
-              <h4 className="text-3xl sm:text-4xl">
+              <h4 className="text-3xl sm:text-4xl pt-4 text-amber-600 sm:font-semibold">🍴 How to Make it</h4>
+              <p className="text-xl text-amber-200">-{element.strInstructions}</p>
+              <h4 className="text-3xl sm:text-4xl pt-4 text-amber-600 sm:font-semibold">
                 🍳 Ingredients and quantity
               </h4>
-              <p className="text-xl sm:text-2xl">
+              <p className="text-xl text-amber-200">
                 {element.strIngredient1 || element.strIngredient1 !== "" ? (
                   <span>
                     1. {element.strIngredient1} - {element.strMeasure1}
@@ -248,11 +254,14 @@ const Recipe = () => {
                   ""
                 )}
               </p>
+              <h4 className="text-3xl sm:text-4xl pt-4 text-amber-600 sm:font-semibold">💻 Recipe Video</h4>
               <iframe
-                src={element.strYoutube}
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
+                className=""
+                width="560" height="315"
+                src={`https://www.youtube.com/embed/${youtubeId}`}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
                 title="video"
               ></iframe>
             </div>
