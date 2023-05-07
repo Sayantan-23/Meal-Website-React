@@ -43,7 +43,9 @@ const Header = () => {
               className="normal-case text-xl sm:text-3xl text-[#f1faee] font-bold"
             >
               <span className="relative flex">
-                <span className="relative text-4xl right-11 sm:right-11 sm:top-0 sm:text-6xl font-semibold">R<span className="absolute right-1 text-amber-700">R</span></span>
+                <span className="relative text-4xl right-11 sm:right-11 sm:top-0 sm:text-6xl font-semibold">
+                  R<span className="absolute right-1 text-amber-700">R</span>
+                </span>
                 <span className="flex flex-col justify-center items-center relative">
                   <span className="text-amber-700 absolute z-10 bottom-3 sm:bottom-4 -left-11">
                     ecipe
@@ -60,15 +62,11 @@ const Header = () => {
             className="form-control flex-row items-center gap-3"
             onSubmit={(e) => e.preventDefault()}
           >
-            {/* <input
-              type="text"
-              placeholder="Search by name"
-              className="input input-bordered rounded-[100vmax] h-10 w-24 sm:w-40 md:w-48"
-              onChange={(e) => setInputData(e.target.value)}
-              value={inputData}
-            /> */}
             <Link to="/search">
-              <button className="btn bg-base-100 hover:bg-amber-700 rounded-[100vmax] p-2 w-12">
+              <button
+                className="btn bg-base-100 hover:bg-amber-700 rounded-[100vmax] p-2 w-12"
+                title="Search"
+              >
                 <img className="w-5" src={searchIcon} alt="Search Icon" />
               </button>
             </Link>

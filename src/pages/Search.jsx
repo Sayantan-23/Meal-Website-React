@@ -1,21 +1,23 @@
 import axios from "../axios/axios";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import searchIcon from "../assets/search.png";
 import { Link } from "react-router-dom";
 import useStore from "../app/store";
+import Loader from "../components/Loader";
 
 const Search = () => {
   const [inputData, setInputData] = useState("");
   const [onSearch, setOnSearch] = useState(false);
   const [searchData, setSearchData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const changeInputValue = useStore((state) => state.changeInputValue);
 
   const handleOnClick = () => {
     setOnSearch(true);
     if (inputData) {
-      sessionStorage.removeItem("lists")
+      sessionStorage.removeItem("lists");
     }
   };
 
@@ -25,6 +27,7 @@ const Search = () => {
   };
 
   const getSearchData = async () => {
+    setIsLoading(true);
     try {
       const res = await axios.get(`/search.php?s=${inputData}`);
       if (res.data.meals === null) {
@@ -37,6 +40,7 @@ const Search = () => {
     } catch (error) {
       setErrorMessage("Not Found");
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -45,7 +49,6 @@ const Search = () => {
         ? JSON.parse(sessionStorage.getItem("lists"))
         : [];
     setSearchData(recipe);
-
     if (recipe.length === 0) {
       if (onSearch) {
         if (inputData.trim().length === 0) {
@@ -57,8 +60,6 @@ const Search = () => {
       }
     }
   }, [onSearch]);
-
-  console.log(searchData);
 
   return (
     <>
@@ -76,39 +77,49 @@ const Search = () => {
           <img className="w-5" src={searchIcon} alt="Search Icon" />
         </button>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-8 pb-8">
-        {errorMessage ? (
-          <p className="text-xl sm:text-2xl md:text-5xl pt-8 text-amber-700 text-center font-medium">
-            {errorMessage}🍔
-          </p>
-        ) : (
-          <>
-            {searchData.map((element) => {
-              return (
-                <Link to={"/recipe"} key={element.idMeal}>
-                  <div
-                    className="card group w-64 bg-[#2f2922] shadow-xl text-white mt-8 cursor-pointer pt-0"
-                    key={element.idMeal}
-                    onClick={() => searchOnClick(element.strMeal)}
-                  >
-                    <figure className="p-2 group-hover:scale-110 transition-all duration-300">
-                      <img
-                        src={element.strMealThumb}
-                        alt="Meal Image"
-                        className="rounded-xl"
-                      />
-                    </figure>
-                    <div className="card-body items-center text-center text-amber-50 group-hover:text-amber-200 transition-all duration-300">
-                      <h2 className="card-title">{element.strMeal}</h2>
-                      <span className="text-amber-200 group-hover:text-amber-400 transition-all duration-300">{element.strArea}</span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="z-50 pt-32 h-[45vh] flex justify-center items-center">
+          <Loader />
+        </div>
+      ) : (
+        <>
+          <div className="flex flex-wrap justify-center items-center gap-8 pb-8">
+            {errorMessage ? (
+              <p className="text-xl sm:text-2xl md:text-5xl pt-8 text-amber-700 text-center font-medium">
+                {errorMessage}🍔
+              </p>
+            ) : (
+              <>
+                {searchData.map((element) => {
+                  return (
+                    <Link to={"/recipe"} key={element.idMeal}>
+                      <div
+                        className="card group w-64 bg-[#2f2922] shadow-xl text-white mt-8 cursor-pointer pt-0"
+                        key={element.idMeal}
+                        onClick={() => searchOnClick(element.strMeal)}
+                      >
+                        <figure className="p-2 group-hover:scale-110 transition-all duration-300">
+                          <img
+                            src={element.strMealThumb}
+                            alt="Meal Image"
+                            className="rounded-xl"
+                          />
+                        </figure>
+                        <div className="card-body items-center text-center text-amber-50 group-hover:text-amber-200 transition-all duration-300">
+                          <h2 className="card-title">{element.strMeal}</h2>
+                          <span className="text-amber-200 group-hover:text-amber-400 transition-all duration-300">
+                            {element.strArea}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </>
+            )}
+          </div>
+        </>
+      )}
     </>
   );
 };

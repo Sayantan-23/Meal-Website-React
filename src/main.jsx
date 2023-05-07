@@ -5,13 +5,12 @@ import "./index.css";
 import {
   createBrowserRouter,
   RouterProvider,
-  createRoutesFromElements,
-  Route,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import Search from "./pages/Search";
 import Recipe from "./pages/Recipe";
+import CategorySearch from "./pages/CategorySearch";
 
 const appRouter = createBrowserRouter([
   {
@@ -27,27 +26,23 @@ const appRouter = createBrowserRouter([
         element: <Categories />,
       },
       {
+        path: "/category-search",
+        element: <CategorySearch />,
+      },
+      {
         path: "/search",
         element: <Search />,
       },
       {
         path: "/recipe",
-        element:<Recipe />
-      }
+        element: <Recipe />,
+      },
     ],
   },
 ]);
 
-// const appRouter = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path='/' element={<App />}>
-//       <Route index element={<Home />} />
-//     </Route>
-//   )
-// )
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <RouterProvider router={appRouter} />
+    <RouterProvider router={appRouter} />
   </React.StrictMode>
 );
