@@ -1,6 +1,9 @@
 const Card = ({ mealName, mealImage, onClick }) => {
   return (
-    <div className="card group w-64 bg-[#e9ddd2df] shadow-xl cursor-pointer" onClick={onClick}>
+    <div
+      className="card group w-64 bg-[#e9ddd2df] shadow-xl cursor-pointer"
+      onClick={onClick}
+    >
       <figure className="px-5 pt-5 rounded-xl group-hover:scale-110 transition-all duration-300">
         <img src={mealImage} alt="Category Image" />
       </figure>

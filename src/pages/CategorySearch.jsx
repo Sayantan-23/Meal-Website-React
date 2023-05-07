@@ -42,7 +42,7 @@ const CategorySearch = () => {
     if (categoryInputData.length === 0) {
       getDataFromSessionStorage();
     } else {
-      getSearchData()
+      getSearchData();
     }
   }, []);
 
