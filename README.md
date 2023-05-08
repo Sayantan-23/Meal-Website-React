@@ -4,6 +4,14 @@
 
 A recipe app made using ReactJS. User can **search** for meals and recipes in `search` page. User can see **all the categories** in `category` page and can get all meals **filtered by category** from the `category-search` page and user can get the **recipe details** and all the other instructions with **available youtube video** from the `recipe` page.
 
+Api Used - [Meal Db Api](https://www.themealdb.com/api.php)
+
+### Live Link - [https://recipe-realm-olive.vercel.app/](https://recipe-realm-olive.vercel.app/)
+
+## Tools
+
+ReactJS (React-Router, Zustand, Axios), DaisyUI, TailwindCSS
+
 ## How To Run Locally
 
 Just copy all the file then run these two commands -
