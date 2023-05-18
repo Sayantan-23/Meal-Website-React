@@ -96,9 +96,9 @@ const Recipe = () => {
                         🍳 Ingredients and quantity
                       </h4>
                       <p className="text-xl text-amber-200">
-                        {element.strIngredient1 ||
-                        element.strIngredient1 !== "" ||
-                        element.strIngredient1 !== null ? (
+                        {element.strIngredient1 &&
+                        (element.strIngredient1 !== "" ||
+                          element.strIngredient1 !== null) ? (
                           <span>
                             1. {element.strIngredient1} - {element.strMeasure1}
                             <br />
@@ -106,9 +106,9 @@ const Recipe = () => {
                         ) : (
                           ""
                         )}
-                        {element.strIngredient2 ||
-                        element.strIngredient2 !== "" ||
-                        element.strIngredient2 !== null ? (
+                        {element.strIngredient2 &&
+                        (element.strIngredient2 !== "" ||
+                          element.strIngredient2 !== null) ? (
                           <span>
                             2. {element.strIngredient2} - {element.strMeasure2}
                             <br />
@@ -117,9 +117,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient3 ||
-                        element.strIngredient3 !== "" ||
-                        element.strIngredient3 !== null ? (
+                        {element.strIngredient3 &&
+                        (element.strIngredient3 !== "" ||
+                          element.strIngredient3 !== null) ? (
                           <span>
                             3. {element.strIngredient3} - {element.strMeasure3}
                             <br />
@@ -128,9 +128,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient4 ||
-                        element.strIngredient4 !== "" ||
-                        element.strIngredient4 !== null ? (
+                        {element.strIngredient4 &&
+                        (element.strIngredient4 !== "" ||
+                          element.strIngredient4 !== null) ? (
                           <span>
                             4. {element.strIngredient4} - {element.strMeasure4}
                             <br />
@@ -139,9 +139,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient5 ||
-                        element.strIngredient5 !== "" ||
-                        element.strIngredient5 !== null ? (
+                        {element.strIngredient5 &&
+                        (element.strIngredient5 !== "" ||
+                          element.strIngredient5 !== null) ? (
                           <span>
                             5. {element.strIngredient5} - {element.strMeasure5}
                             <br />
@@ -150,9 +150,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient6 ||
-                        element.strIngredient6 !== "" ||
-                        element.strIngredient6 !== null ? (
+                        {element.strIngredient6 &&
+                        (element.strIngredient6 !== "" ||
+                          element.strIngredient6 !== null) ? (
                           <span>
                             6. {element.strIngredient6} - {element.strMeasure6}
                             <br />
@@ -161,9 +161,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient7 ||
-                        element.strIngredient7 !== "" ||
-                        element.strIngredient7 !== null ? (
+                        {element.strIngredient7 &&
+                        (element.strIngredient7 !== "" ||
+                          element.strIngredient7 !== null) ? (
                           <span>
                             7. {element.strIngredient7} - {element.strMeasure7}
                             <br />
@@ -172,9 +172,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient8 ||
-                        element.strIngredient8 !== "" ||
-                        element.strIngredient8 !== null ? (
+                        {element.strIngredient8 &&
+                        (element.strIngredient8 !== "" ||
+                          element.strIngredient8 !== null) ? (
                           <span>
                             8. {element.strIngredient8} - {element.strMeasure8}
                             <br />
@@ -183,9 +183,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient9 ||
-                        element.strIngredient9 !== "" ||
-                        element.strIngredient9 !== null ? (
+                        {element.strIngredient9 &&
+                        (element.strIngredient9 !== "" ||
+                          element.strIngredient9 !== null) ? (
                           <span>
                             9. {element.strIngredient9} - {element.strMeasure9}
                             <br />
@@ -194,9 +194,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient10 ||
-                        element.strIngredient10 !== "" ||
-                        element.strIngredient10 !== null ? (
+                        {element.strIngredient10 &&
+                        (element.strIngredient10 !== "" ||
+                          element.strIngredient10 !== null) ? (
                           <span>
                             10. {element.strIngredient10} -{" "}
                             {element.strMeasure10}
@@ -206,9 +206,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient11 ||
-                        element.strIngredient11 !== "" ||
-                        element.strIngredient11 !== null ? (
+                        {element.strIngredient11 &&
+                        (element.strIngredient11 !== "" ||
+                          element.strIngredient11 !== null) ? (
                           <span>
                             11. {element.strIngredient11} -{" "}
                             {element.strMeasure11}
@@ -218,9 +218,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient12 ||
-                        element.strIngredient12 !== "" ||
-                        element.strIngredient12 !== null ? (
+                        {element.strIngredient12 &&
+                        (element.strIngredient12 !== "" ||
+                          element.strIngredient12 !== null) ? (
                           <span>
                             12. {element.strIngredient12} -{" "}
                             {element.strMeasure12}
@@ -230,9 +230,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient13 ||
-                        element.strIngredient13 !== "" ||
-                        element.strIngredient13 !== null ? (
+                        {element.strIngredient13 &&
+                        (element.strIngredient13 !== "" ||
+                          element.strIngredient13 !== null) ? (
                           <span>
                             13. {element.strIngredient13} -{" "}
                             {element.strMeasure13}
@@ -242,9 +242,9 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient14 ||
-                        element.strIngredient14 !== "" ||
-                        element.strIngredient14 !== null ? (
+                        {element.strIngredient14 &&
+                        (element.strIngredient14 !== "" ||
+                          element.strIngredient14 !== null) ? (
                           <span>
                             14. {element.strIngredient14} -{" "}
                             {element.strMeasure14}
@@ -254,21 +254,21 @@ const Recipe = () => {
                           ""
                         )}
 
-                        {element.strIngredient15 ||
-                        element.strIngredient15 !== "" ||
-                        element.strIngredient15 !== null ? (
+                        {element.strIngredient15 &&
+                        (element.strIngredient15 !== "" ||
+                          element.strIngredient15 !== null) ? (
                           <span>
                             15. {element.strIngredient15} -{" "}
                             {element.strMeasure15}
                             <br />
                           </span>
                         ) : (
-                          ""
+                          <></>
                         )}
 
-                        {element.strIngredient16 ||
-                        element.strIngredient16 !== "" ||
-                        element.strIngredient16 !== null ? (
+                        {element.strIngredient16 &&
+                        (element.strIngredient16 !== "" ||
+                          element.strIngredient16 !== null) ? (
                           <span>
                             16. {element.strIngredient16} -{" "}
                             {element.strMeasure16}
@@ -277,9 +277,9 @@ const Recipe = () => {
                         ) : (
                           ""
                         )}
-                        {element.strIngredient17 ||
-                        element.strIngredient17 !== "" ||
-                        element.strIngredient17 !== null ? (
+                        {element.strIngredient17 &&
+                        (element.strIngredient17 !== "" ||
+                          element.strIngredient17 !== null) ? (
                           <span>
                             17. {element.strIngredient17} -{" "}
                             {element.strMeasure17}
@@ -288,9 +288,9 @@ const Recipe = () => {
                         ) : (
                           ""
                         )}
-                        {element.strIngredient18 ||
-                        element.strIngredient18 !== "" ||
-                        element.strIngredient18 !== null ? (
+                        {element.strIngredient18 &&
+                        (element.strIngredient18 !== "" ||
+                          element.strIngredient18 !== null) ? (
                           <span>
                             18. {element.strIngredient18} -{" "}
                             {element.strMeasure18}
@@ -299,9 +299,9 @@ const Recipe = () => {
                         ) : (
                           ""
                         )}
-                        {element.strIngredient19 ||
-                        element.strIngredient19 !== "" ||
-                        element.strIngredient19 !== null ? (
+                        {element.strIngredient19 &&
+                        (element.strIngredient19 !== "" ||
+                          element.strIngredient19 !== null) ? (
                           <span>
                             19. {element.strIngredient19} -{" "}
                             {element.strMeasure19}
@@ -310,9 +310,9 @@ const Recipe = () => {
                         ) : (
                           ""
                         )}
-                        {element.strIngredient20 ||
-                        element.strIngredient20 !== "" ||
-                        element.strIngredient20 !== null ? (
+                        {element.strIngredient20 &&
+                        (element.strIngredient20 !== "" ||
+                          element.strIngredient20 !== null) ? (
                           <span>
                             20. {element.strIngredient20} -{" "}
                             {element.strMeasure20}
